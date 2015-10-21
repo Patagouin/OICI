@@ -20,12 +20,43 @@ hold on;
 figure(1);
 scatter(TestBar(:,1),TestBar(:,2),'b');
 scatter(TestSaumon(:,1),TestSaumon(:,2),'r');
+
 hold off;
 
 hold on;
 figure(2);
 scatter(VerrorBar(:,1),VerrorBar(:,2),'r');
 scatter(VerrorSaumon(:,1),VerrorSaumon(:,2),'b');
+hold off;
+
+figure(3)
+hold on
+x1= -20 : .2: 25;
+x2= -20 : .2: 25;
+
+[X1,X2]=meshgrid(x1,x2);
+
+Fsaum=mvnpdf([X1(:) X2(:)],muTrainSaumon,sigmaTrainSaumon);
+
+Fsaum=reshape(Fsaum, length(x2), length(x1));
+
+Fbar=mvnpdf([X1(:) X2(:)],muTrainBar,sigmaTrainBar);
+
+Fbar=reshape(Fbar, length(x2), length(x1));
+
+
+contour(x1,x2,Fsaum);
+
+contour(x1,x2,Fbar);
+
+scatter(VerrorBar(:,1),VerrorBar(:,2),'r');
+scatter(VerrorSaumon(:,1),VerrorSaumon(:,2),'r');
+
+axis([4 24 -2 16], 'square');
+
+hold off;
+
+
 
 %scatter(Verro(2,1,:),Verro(2,2,:),'r');
 %plot(Verror(1, :),'b');
@@ -37,6 +68,6 @@ scatter(VerrorSaumon(:,1),VerrorSaumon(:,2),'b');
 %hist(Verror(3, :),'b');
 %hist(Verror(4, :),'r');
 %visuTeorique(muTrainBar,sigmaTrainBar,muTrainSaumon,sigmaTrainSaumon);
-hold off;
+%hold off;
 
 %visuTeorique(7,3,10,2);

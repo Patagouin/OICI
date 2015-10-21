@@ -20,12 +20,20 @@ hold on;
 figure(1);
 scatter(TestBar(:,1),TestBar(:,2),'b');
 scatter(TestSaumon(:,1),TestSaumon(:,2),'r');
+scatter(VerrorBar(:,1),VerrorBar(:,2),'g');
+scatter(VerrorSaumon(:,1),VerrorSaumon(:,2),'g');
 hold off;
 
 hold on;
 figure(2);
 scatter(VerrorBar(:,1),VerrorBar(:,2),'r');
 scatter(VerrorSaumon(:,1),VerrorSaumon(:,2),'b');
+hold off;
+
+
+
+
+
 
 %scatter(Verro(2,1,:),Verro(2,2,:),'r');
 %plot(Verror(1, :),'b');
@@ -37,6 +45,6 @@ scatter(VerrorSaumon(:,1),VerrorSaumon(:,2),'b');
 %hist(Verror(3, :),'b');
 %hist(Verror(4, :),'r');
 %visuTeorique(muTrainBar,sigmaTrainBar,muTrainSaumon,sigmaTrainSaumon);
-hold off;
+%hold off;
 
 %visuTeorique(7,3,10,2);
