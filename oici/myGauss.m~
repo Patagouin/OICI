@@ -1,0 +1,25 @@
+function [ y ] = myGauss(x, u, sigma )
+%UNTITLED Summary of this function goes here
+%   Detailed explanation goes here
+
+y = (exp(-1/2*(((x-u)/sigma).^2)))/(sqrt(2*pi)*sigma);
+
+end
+
+
+mu = 10;
+sigma = 3;
+
+x = mvnrnd(mu,sigma,100);
+
+hold on;
+
+hist(x);
+
+x = 0:0.1:20;
+
+gauss  = myGauss(x,mu,sigma);
+
+gauss = gauss .* 100;
+plot(gauss);
+hold off;

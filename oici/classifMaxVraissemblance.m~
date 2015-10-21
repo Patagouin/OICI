@@ -1,0 +1,10 @@
+function [ res ] = classifieurMV( test, mu1, mu2, sigma1, sigma2)
+%UNTITLED2 Summary of this function goes here
+%   Detailed explanation goes here
+
+pt1 = myGauss(test,mu1,sigma1);
+pt2 = myGauss(test,mu2,sigma2);
+
+res = ones(size(test));
+res = res + (pt1 > pt2);
+end
