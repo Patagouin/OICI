@@ -17,11 +17,20 @@ for i=1:nbIter
     
     nbBarErreur = 2*size(ResBar, 1) - sum(ResBar);
     nbSaumonErreur = sum(ResSaumon) - size(ResSaumon, 1);
-    vError(1, i) = nbBarErreur;
-    vError(2, i) = nbSaumonErreur;
+    vError(1, i) = nbBarErreur/size(ResSaumon,1);
+    vError(2, i) = nbSaumonErreur/size(ResSaumon, 1);
+    
+    tmp = find();
 end;
+
 hold on;
-plot(vError(1, :), 'g');
-plot(vError(2, :), 'r');
+%vError(1, :) = vError(1, :) / ( size(vError(1,:), 2));
+%vError(2, :) = vError(2, :) / ( size(vError(2,:), 2));
+%vError(1, :) = vError(1, :) * 100;
+%vError(2, :) = vError(2, :) * 100;
+
+
+%plot(vError(1, :), 'g');
+%plot(vError(2, :), 'r');
 
 hold off;

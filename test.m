@@ -4,6 +4,7 @@
     sigBar = 5;
     testeur = -10:0.1:25;
     ptSaumon = myGauss(testeur, uSaumon,sigSaumon);
+    
     ptBar = myGauss(testeur, uBar, sigBar);
     
     [ th1, th2] = delimiteur(uBar, uSaumon, sigBar, sigSaumon);
