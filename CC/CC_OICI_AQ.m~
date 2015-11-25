@@ -1,0 +1,99 @@
+load OICI-DATA-2015;
+Classe{1}=ClasseC1;
+Classe{2}=ClasseC2;
+Classe{3}=ClasseC3;
+Classe{4}=ClasseC4;
+nbIter = 100;
+sizeTrain = 1000;
+ResTot={};
+ErreurTot={};
+for i=1:nbIter
+    [TrainClasse,TestClasse] = extraction_CC( sizeTrain,Classe);
+    [MuTrainClasse,SigmaTrainClasse] = entrainement_CC(TrainClasse);
+    [Res3D,Erreur3D,NB_Erreur3D] = evaluateur3D_CC( TestClasse,MuTrainClasse,SigmaTrainClasse );
+    ResTot3D{i}=Res3D;
+    ErreurTot3D{i}=Erreur3D;
+    NB_ErreurTot3D(:,i)=NB_Erreur3D;
+    [Res2D12,Erreur2D12,NB_Erreur2D12] = evaluateur2D_CC( TestClasse,MuTrainClasse,SigmaTrainClasse,1,2);
+    NB_ErreurTot2D12(:,i)=NB_Erreur2D12;
+    ErreurTot2D12{i}=Erreur2D12;
+    [Res2D13,Erreur2D13,NB_Erreur2D13] = evaluateur2D_CC( TestClasse,MuTrainClasse,SigmaTrainClasse,1,3);
+    NB_ErreurTot2D13(:,i)=NB_Erreur2D13;
+    ErreurTot2D13{i}=Erreur2D13;
+    [Res2D23,Erreur2D23,NB_Erreur2D23] = evaluateur2D_CC( TestClasse,MuTrainClasse,SigmaTrainClasse,2,3);
+    NB_ErreurTot2D23(:,i)=NB_Erreur2D23;
+    ErreurTot2D23{i}=Erreur2D23;
+    
+    [Res1D1,Erreur1D1,NB_Erreur1D1] = evaluateur1D_CC( TestClasse,MuTrainClasse,SigmaTrainClasse,1);
+    NB_ErreurTot1D1(:,i)=NB_Erreur1D1;
+    [Res1D2,Erreur1D2,NB_Erreur1D2] = evaluateur1D_CC( TestClasse,MuTrainClasse,SigmaTrainClasse,2);
+    NB_ErreurTot1D2(:,i)=NB_Erreur1D2;
+    [Res1D3,Erreur1D3,NB_Erreur1D3] = evaluateur1D_CC( TestClasse,MuTrainClasse,SigmaTrainClasse,3);
+    NB_ErreurTot1D3(:,i)=NB_Erreur1D3;
+end;
+for i=1:4
+    sigma_NB_ErreurTot3D(i,1)=var(NB_ErreurTot3D(i,:));
+end
+
+clf('reset');
+figure('Name','pourcentage_d_erreur_en_3_dimensions)
+VisuNBErreur( NB_ErreurTot3D )
+
+figure(2)
+VisuNBErreur( NB_ErreurTot2D12 )
+
+figure(3)
+VisuNBErreur( NB_ErreurTot2D13 )
+
+figure(4)
+VisuNBErreur( NB_ErreurTot2D23 )
+
+figure(5)
+VisuNBErreur( NB_ErreurTot1D1 )
+
+figure(6)
+VisuNBErreur( NB_ErreurTot1D2 )
+
+figure(7)
+VisuNBErreur( NB_ErreurTot1D3 )
+
+figure(8);
+VisuErreur( TestClasse,Erreur3D )
+
+
+%figure(6);
+% 
+% 
+% hold on;
+% xlabel('Red');
+% ylabel('Green');
+% scatter(ClasseC1(:,1),ClasseC1(:,2),'b','+');
+% scatter(ClasseC2(:,1),ClasseC2(:,2),'r','+');
+% scatter(ClasseC3(:,1),ClasseC3(:,2),'g','+');
+% scatter(ClasseC4(:,1),ClasseC4(:,2),'m','+');
+% 
+% hold off;
+% 
+% figure(7);
+% 
+% hold on;
+% xlabel('Red');
+% ylabel('Blue');
+% scatter(ClasseC1(:,1),ClasseC1(:,3),'b','+');
+% scatter(ClasseC2(:,1),ClasseC2(:,3),'r','+');
+% scatter(ClasseC3(:,1),ClasseC3(:,3),'g','+');
+% scatter(ClasseC4(:,1),ClasseC4(:,3),'m','+');
+% 
+% hold off;
+% 
+% figure(8);
+% 
+% hold on;
+% xlabel('Green');
+% ylabel('Blue');
+% scatter(ClasseC1(:,2),ClasseC1(:,3),'b','+');
+% scatter(ClasseC2(:,2),ClasseC2(:,3),'r','+');
+% scatter(ClasseC3(:,2),ClasseC3(:,3),'g','+');
+% scatter(ClasseC4(:,2),ClasseC4(:,3),'m','+');
+% 
+% hold off;

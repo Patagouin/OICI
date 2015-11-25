@@ -1,0 +1,4 @@
+load OICI-DATA-2015;
+mean1=mean(ClasseC1);
+mean2=mean(ClasseC2);
+Sw=cov(ClasseC1)*size(ClasseC1,1)+cov(ClasseC2)*size(ClasseC2,1);

@@ -15,9 +15,9 @@ Proj = e1 * transpose(C1C)
 
 hold on;
 figure(1);
-scatter3(ClasseC1(:,1),ClasseC1(:,2), ClasseC1(:,3), 'r');
-scatter3(ClasseC2(:,1),ClasseC2(:,2), ClasseC2(:,3), 'b' );
-scatter(ClasseC1(:,1),ClasseC1(:,2), 'g');
+% scatter3(ClasseC1(:,1),ClasseC1(:,2), ClasseC1(:,3), 'r');
+% 
+% scatter3(ClasseC2(:,1),ClasseC2(:,2), ClasseC2(:,3), 'b' );
 
 % figure(2);
 % scatter3(VerrorBar(:,1),VerrorBar(:,2), VerrorBar(:,3), 'w');

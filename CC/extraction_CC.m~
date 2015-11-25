@@ -1,0 +1,37 @@
+function [TrainClasse1,TestClasse1,TrainClasse2,TestClasse2,TrainClasse3,TestClasse3,TrainClasse4,TestClasse4] = extraction_CC( sizeTrain,Classe)
+%UNTITLED8 Summary of this function goes here
+%   Detailed explanation goes here
+NB_Classe=length(Classe);
+for i=1:NB_Classe
+    VTSize=length(Classe{i});
+    Z=randperm(VTSize);
+    TrainClasseIndice = Z(1:sizeTrain);
+TestClasse1Indice = Z(sizeTrain+1:VTSize);
+TrainClasse1 = Classe1(TrainClasse1Indice,:);
+TestClasse1 = Classe1(TestClasse1Indice,:);
+
+
+VTSize=size(Classe2,1);
+Z=randperm(VTSize);
+TrainClasse2Indice = Z(1:sizeTrain);
+TestClasse2Indice = Z(sizeTrain+1:VTSize);
+TrainClasse2 = Classe2(TrainClasse2Indice,:);
+TestClasse2 = Classe2(TestClasse2Indice,:);
+
+
+VTSize=size(Classe3,1);
+Z=randperm(VTSize);
+TrainClasse3Indice = Z(1:sizeTrain);
+TestClasse3Indice = Z(sizeTrain+1:VTSize);
+TrainClasse3 = Classe3(TrainClasse3Indice,:);
+TestClasse3 = Classe3(TestClasse3Indice,:);
+
+
+VTSize=size(Classe4,1);
+Z=randperm(VTSize);
+TrainClasse4Indice = Z(1:sizeTrain);
+TestClasse4Indice = Z(sizeTrain+1:VTSize);
+TrainClasse4 = Classe4(TrainClasse4Indice,:);
+TestClasse4 = Classe4(TestClasse4Indice,:);
+
+end
