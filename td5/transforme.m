@@ -7,5 +7,5 @@ CP2 = [vec2 C2];
 
 CS1 = CP1;
 CS2 = -1.*CP2; 
-Y = [CS1; CS2] % Rajout en fin de colonne
+Y = [CS1; CS2]; % Rajout en fin de colonne
 end
