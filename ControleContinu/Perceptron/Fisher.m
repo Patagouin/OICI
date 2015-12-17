@@ -5,4 +5,3 @@ Sw=cov(Classe1)*[size(Classe1,1)-1]+cov(Classe2)*[size(Classe2,1)-1];
 Swinv=inv(Sw);
 Wmu =(mean1-mean2);
 v=Swinv*Wmu';
-end

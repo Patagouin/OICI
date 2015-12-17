@@ -1,0 +1,47 @@
+function [ Wk, W ] = perceptron(Y)
+% descente de gradient
+% 
+% mu1 = mean(Y, 1);
+% matMu1 = repmat(mu1, size(Y,1),1);
+% YC = Y-matMu1;
+% S=size(YC,1)*cov(YC);
+% [v l]= eig(S);
+
+Wk = zeros(1, 3);
+W = ones(1,3);%v(1,:);
+
+epsilon = 0.1;
+
+C1 = [ 2 1; 4 3; 3 5];
+C2 = [ 1 3 ; 5 6;];
+
+precedent = Wk;
+suivant = W;
+tmp = W;
+cpt = 0;
+while(norm(suivant - precedent) > epsilon)
+    cpt = cpt + 1;
+    precedent = tmp;
+    MC = malClasses(Y, precedent);
+    
+  suivant  = precedent +  sum(MC);
+  tmp = suivant;
+  hold on;
+    scatter(C1(:,1),C1(:,2),'r');
+    scatter(C2(:,1),C2(:,2),'b');
+    x = 0:10;0.1;
+
+  i = -(precedent(2)/precedent(3)) * x - precedent(1)/precedent(3);
+  ik = -(suivant(2)/suivant(3)) * x - suivant(1)/suivant(3);
+  plot (x, ik);
+  drawnow;
+
+  plot (x, i);
+  drawnow;
+  hold off;
+end 
+ 
+Wk = suivant;
+W = precedent;
+
+end
